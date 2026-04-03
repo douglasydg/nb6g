@@ -1,6 +1,6 @@
 title: "NB6G Amateur Radio"
 description: "Personal amateur radio website"
-url: "https://douglasyu.net/nb6g/"
+url: "https://douglasyu.net"
 baseurl: "/nb6g"
 
 markdown: kramdown
