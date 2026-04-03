@@ -1,38 +1,33 @@
 ---
 layout: default
 ---
-
-<section>
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
-  <p>Personal amateur radio website with notes on equipment, antennas, operation, and study.</p>
-</section>
-
-<hr>
-
-<section>
-  <h2>Quick Access</h2>
-  <ul>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/equipment/">Equipment</a></li>
-    <li><a href="/antennas/">Antennas</a></li>
-    <li><a href="/study-notes/">Study Notes</a></li>
-    <li><a href="/logbooks/">Logbooks</a></li>
-    <li><a href="/qsl-info/">QSL Info</a></li>
-    <li><a href="/links/">Links</a></li>
-  </ul>
-</section>
-
-<hr>
-
-<section>
-  <h2>Recent Study Notes</h2>
-  <ul>
-    {% for post in site.posts limit:5 %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        — {{ post.date | date: "%Y-%m-%d" }}
-      </li>
-    {% endfor %}
-  </ul>
-</section>
+<!-- Post -->
+{% for post in site.posts %} 
+  <article class="post">
+    <header>
+      <div class="title">
+      <span class="image left image-icon"><a href="{{ post.url | relative_url }}"><img src="{{ site.baseurl}}/images/{{ post.icon }}.svg" style="width: 4em;" alt="{{ post.icon }}"></a></span>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+      </div>
+      <div class="meta">
+        <time class="published" datetime="{{ post.date }}">{{ post.date | date: "%d %b %Y %R" }}</time>
+        <a href="{{ site.author.cv }}" class="author"><span class="name">V.{{ site.author.last_name }}</span><img src="{{ site.author.avatar | prepend: site.baseurl }}" alt="VKapitonenko" /></a>
+      </div>
+    </header>
+    {% if post.image %}
+      <a href="{{ post.url | relative_url }}" class="image featured"><img src="/post-img/{{ post.category }}/{{ post.image }}" alt="{{ post.title }}"></a>
+    {% endif %}
+    {% if post.preview != 0 %}
+      <p>{{ post.content | truncatewords: 35 }}</p>
+    {% endif %}
+    <footer> 
+      <ul class="actions">
+        <li><a href="{{ post.url | relative_url }}" class="button big">Читать Далее</a></li>
+      </ul>
+      <ul class="stats">
+        <li><a class="icon" href="{{ site.baseurl }}/{{ post.category }}"><i class="fas fa-fw fa-folder"></i> {{ post.category }}</a></li>
+        <li><a href="//github.com/ViKapitoshka/blog/edit/master/{{ page.path }}" class="icon"><i class="fas fa-fw fa-edit"></i> Edit</a></li>
+      </ul>
+    </footer>
+  </article>
+{% endfor %}

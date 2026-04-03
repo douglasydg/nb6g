@@ -1,10 +1,41 @@
-<div style="max-width: 960px; margin: 1.5rem auto 1rem; padding: 0 1rem;">
-  <h1 style="margin: 0;">
-    <a href="/" style="text-decoration: none; color: inherit;">
-      {{ site.title }}
-    </a>
+<!-- Header -->
+<header id="header">
+
+  <h1>
+    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
   </h1>
-  <p style="margin: 0.5rem 0 0; color: #666;">
-    {{ site.description }}
-  </p>
-</div>
+
+  <nav class="links">
+    <ul>
+      {% for item in site.data.links %}
+      <li>
+        <a href="{{ item.href | relative_url }}">{{ item.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <nav class="main">
+    <ul>
+      <li class="menu">
+        <a href="#menu"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Menu -->
+  <section id="menu">
+    <section>
+      <ul class="links">
+        {% for item in site.data.links %}
+        <li>
+          <a href="{{ item.href | relative_url }}">
+            <h3>{{ item.name }}</h3>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </section>
+
+</header>

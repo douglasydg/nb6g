@@ -1,0 +1,20 @@
+- name: About
+  href: /about/
+
+- name: Equipment
+  href: /equipment/
+
+- name: Antennas
+  href: /antennas/
+
+- name: Study Notes
+  href: /study-notes/
+
+- name: Logbooks
+  href: /logbooks/
+
+- name: QSL Info
+  href: /qsl-info/
+
+- name: Links
+  href: /links/

@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% include head.html %}
-  </head>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  {% include head.html %}
+
+  {% if page.url == '/' or page.url == '/index.html' %}
   <body>
-    <header>
+  {% else %}
+  <body class="single">
+  {% endif %}
+
+    <div class="toTop">
+      <i class="fas fa-angle-up"></i>
+    </div>
+
+    <div id="wrapper">
+
       {% include header.html %}
-      {% include menu.html %}
-    </header>
 
-    <main style="max-width: 960px; margin: 2rem auto; padding: 0 1rem;">
-      {{ content }}
-    </main>
+      <main class="page-content" aria-label="Content">
+        <div id="main">
+          {{ content }}
+        </div>
+      </main>
 
-    <footer style="max-width: 960px; margin: 3rem auto 2rem; padding: 0 1rem; color: #666;">
       {% include footer.html %}
-    </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="{{ '/assets/js/skel.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/util.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/transition.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/targetblank.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/scrollTop.js' | relative_url }}"></script>
+
+    {% if site.google_analytics %}
+      {% include analytics.html %}
+    {% endif %}
   </body>
 </html>
