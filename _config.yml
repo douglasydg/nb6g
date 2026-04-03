@@ -1,0 +1,13 @@
+title: "YOURCALL Amateur Radio"
+description: "Personal amateur radio website"
+url: "https://nb6g.github.io"
+baseurl: ""
+
+markdown: kramdown
+theme: minima
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
